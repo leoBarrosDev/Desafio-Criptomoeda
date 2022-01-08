@@ -47,6 +47,15 @@ module.exports = {
         coins: 5,
         createdAt: new Date(),
         updatedAt: new Date()
+      },
+      {
+        address: 2,
+        name: 'Helder',
+        cpf: '10498555402',
+        birthdate: '1994-05-14',
+        coins: 2,
+        createdAt: new Date(),
+        updatedAt: new Date()
       }
     ], {});
 
