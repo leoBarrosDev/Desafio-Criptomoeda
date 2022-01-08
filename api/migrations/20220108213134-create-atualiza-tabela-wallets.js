@@ -1,14 +1,11 @@
-
+'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('wallets', {
-      id: {
+      address: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      address: {
         type: Sequelize.INTEGER
       },
       name: {
@@ -18,10 +15,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       birthdate: {
-        type: Sequelize.DATE
-      },
-      coins: {
-        type: Sequelize.INTEGER
+        type: Sequelize.DATEONLY
       },
       createdAt: {
         allowNull: false,
