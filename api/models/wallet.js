@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   wallet.init({
     address: DataTypes.INTEGER,
     name: DataTypes.STRING,
-    cpf: DataTypes.INTEGER,
+    cpf: DataTypes.STRING,
     birthdate: DataTypes.DATE,
     coins: DataTypes.INTEGER
   }, {
