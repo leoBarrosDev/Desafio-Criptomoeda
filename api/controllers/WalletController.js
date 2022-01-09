@@ -1,7 +1,7 @@
 const database = require('../models')
 
 class WalletController {
-    static async listarWallets(req, res) {
+    static async listaWallets(req, res) {
         try {
             const todasAsWallets = await database.wallet.findAll()
             return res.status(200).json(todasAsWallets)
@@ -11,7 +11,7 @@ class WalletController {
 
     }
 
-    static async selecionarUmaWallet(req, res) {
+    static async selecionaUmaWallet(req, res) {
         const { id } = req.params
         try {
             const oneWallet = await database.wallet.findOne(
@@ -25,7 +25,7 @@ class WalletController {
         }
     }
 
-    static async criarWallet(req, res) {
+    static async criaWallet(req, res) {
         const newWallet = req.body
         try {
             const newWalletCreated = await database.wallet.create(newWallet)
@@ -35,7 +35,7 @@ class WalletController {
         }
     }
 
-    static async atualizarWallet(req, res) {
+    static async atualizaWallet(req, res) {
         const novosDados = req.body
         const { id } = req.params
         try {
@@ -53,7 +53,7 @@ class WalletController {
         }
     }
 
-    static async deletarWallet(req, res) {
+    static async deletaWallet(req, res) {
         const { id } = req.params
         try {
             await database.wallet.destroy({

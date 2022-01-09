@@ -1,21 +1,31 @@
 'use strict';
+
+const sequelize = require("sequelize");
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('wallets', {
-      address: {
+    await queryInterface.createTable('coins', {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      coin: {
         type: Sequelize.STRING
       },
-      cpf: {
+      fullname: {
         type: Sequelize.STRING
       },
-      birthdate: {
-        type: Sequelize.DATEONLY
+      amont: {
+        type: Sequelize.FLOAT
+      },
+      wallet_id: {
+        allowNull: false,
+        type: sequelize.INTEGER,
+        references: {
+          model: 'wallets', key: 'address'
+        }
       },
       createdAt: {
         allowNull: false,
@@ -28,6 +38,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('wallets');
+    await queryInterface.dropTable('coins');
   }
 };

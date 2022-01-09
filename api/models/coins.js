@@ -6,7 +6,12 @@ module.exports = (sequelize, DataTypes) => {
   class coins extends Model {
 
     static associate(models) {
-
+      coins.belongsTo(models.wallets, {
+        foreignKey: 'wallet_id'
+      })
+      coins.hasMany(models.transaction, {
+        foreignKey: 'coin_id'
+      })
     }
   };
   coins.init({

@@ -1,5 +1,7 @@
 const bodyParser = require('body-parser')
 const wallets = require('./walletsRoute')
+const coins = require('./coinsRoute')
+const transactions = require('./transactionsRoute')
 
 
 
