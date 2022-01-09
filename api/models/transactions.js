@@ -6,18 +6,23 @@ module.exports = (sequelize, DataTypes) => {
   class transactions extends Model {
 
     static associate(models) {
-      transactions.belongsTo(models.coins, {
-        foreignKey: 'coin_id'
+      transactions.belongsTo(models.wallet, {
+        foreignKey: 'address'
       })
-      transactions.belongsTo(models.wallets, {
-        foreignKey: 'wallet_id'
+      transactions.belongsTo(models.coin, {
+        foreignKey: 'id'
       })
+
     }
   };
   transactions.init({
     value: DataTypes.FLOAT,
     datetime: DataTypes.DATE,
-    currentCotation: DataTypes.FLOAT
+    currentcotation: DataTypes.FLOAT,
+    sendto: DataTypes.INTEGER,
+    receiveto: DataTypes.INTEGER,
+    coin_id: DataTypes.INTEGER,
+    wallet_address: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'transactions',

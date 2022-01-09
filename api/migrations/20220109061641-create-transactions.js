@@ -8,28 +8,32 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      wallet_id: {
-        allowNull: false,
-        type: sequelize.INTEGER,
-        references: {
-          model: 'wallets', key: 'address'
-        }
-      },
-      coin_id: {
-        allowNull: false,
-        type: sequelize.INTEGER,
-        references: {
-          model: 'coins', key: 'id'
-        }
-      },
       value: {
         type: Sequelize.FLOAT
       },
       datetime: {
         type: Sequelize.DATE
       },
-      currentCotation: {
+      currentcotation: {
         type: Sequelize.FLOAT
+      },
+      sendto: {
+        type: Sequelize.INTEGER
+      },
+      receiveto: {
+        type: Sequelize.INTEGER
+      },
+      coin_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'coins', key: 'id'
+        }
+      },
+      wallet_address: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'wallets', key: 'address'
+        }
       },
       createdAt: {
         allowNull: false,

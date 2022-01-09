@@ -11,11 +11,13 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      birthdate: {
-        type: Sequelize.DATE
-      },
       cpf: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true
+      },
+      birthdate: {
+        type: Sequelize.DATEONLY
       },
       createdAt: {
         allowNull: false,

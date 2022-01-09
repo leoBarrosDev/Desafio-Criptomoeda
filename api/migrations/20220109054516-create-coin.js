@@ -1,7 +1,4 @@
 'use strict';
-
-const sequelize = require("sequelize");
-
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('coins', {
@@ -20,20 +17,19 @@ module.exports = {
       amont: {
         type: Sequelize.FLOAT
       },
-      wallet_id: {
-        allowNull: false,
-        type: sequelize.INTEGER,
+      address_wallet: {
+        type: Sequelize.INTEGER,
         references: {
           model: 'wallets', key: 'address'
+        },
+        createdAt: {
+          allowNull: false,
+          type: Sequelize.DATE
+        },
+        updatedAt: {
+          allowNull: false,
+          type: Sequelize.DATE
         }
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
       }
     });
   },
