@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   wallet.init({
-    adress: {
+    address: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
