@@ -16,17 +16,38 @@ class WalletController {
         try {
             const oneWallet = await database.wallet.findOne(
                 {
-                    where: { address: Number(id) }
+                    where: {
+                        address: Number(id)
+                    }
                 }
             )
             res.status(200).json(oneWallet)
         } catch (error) {
-            return res.status(500).json(error.message)
+            return res.status(404).json(error.message)
         }
     }
 
-    verificaMaiorIdade(dataNascimento) {
+    static verificaMaiorIdade(dataNasc) {
+        var d = new Date,
+            anoAtual = d.getFullYear(),
+            mesAtual = d.getMonth() + 1,
+            diaAtual = d.getDate(),
 
+            anoAniversario = +anoAniversario,
+            mesAniversario = +mesAniversario,
+            diaAniversario = +diaAniversario,
+
+            quantosAnos = anoAtual - anoAniversario;
+
+        if (mesAtual < mesAniversario || mesAtual == mesAniversario && diaAtual < diaAniversario) {
+            quantosAnos--;
+        }
+
+        if (quantosAnos >= 18) {
+            return true
+        } else {
+            return false
+        }
     }
 
     static validaCpf(numeroCpf) {
@@ -54,13 +75,14 @@ class WalletController {
 
     static async criaWallet(req, res) {
         const newWallet = req.body
+        const maiorDeIdade = WalletController.verificaMaiorIdade(req.body.birthdate)
         const cpfValido = WalletController.validaCpf(req.body.cpf)
         try {
-            if (cpfValido == true) {
+            if (cpfValido == true || maiorDeIdade == true) {
                 const newWalletCreated = await database.wallet.create(newWallet)
                 return res.status(201).json(newWalletCreated)
             } else {
-                res.json({ mensagem: `o cfp ${req.body.cpf} não é válido` })
+                res.json({ mensagem: `o CPF ${req.body.cpf} não é válido` })
             }
         } catch (error) {
             return res.status(500).json(error.message)
