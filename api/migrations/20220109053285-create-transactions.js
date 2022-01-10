@@ -20,7 +20,7 @@ module.exports = {
       sendto: {
         type: Sequelize.INTEGER
       },
-      receiveto: {
+      receivefrom: {
         type: Sequelize.INTEGER
       },
       coin_id: {

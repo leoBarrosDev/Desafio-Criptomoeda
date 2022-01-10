@@ -6,7 +6,9 @@ const transactions = require('./transactionsRoute')
 
 
 module.exports = app => {
-    app.use(bodyParser.json())
-    app.use(wallets)
-
+    app.use(bodyParser.json(),
+        wallets,
+        coins,
+        transactions
+    )
 }

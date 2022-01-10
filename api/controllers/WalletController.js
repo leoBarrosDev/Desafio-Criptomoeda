@@ -39,7 +39,7 @@ class WalletController {
 
             quantosAnos = anoAtual - anoAniversario;
 
-        if (mesAtual < mesAniversario || mesAtual == mesAniversario && diaAtual < diaAniversario) {
+        if (mesAtual < mesAniversario || (mesAtual == mesAniversario && diaAtual < diaAniversario)) {
             quantosAnos--;
         }
 
@@ -71,13 +71,27 @@ class WalletController {
         return true;
     }
 
+    static adicionaFundos() {
+    }
 
+    static removeFundos() {
+    }
+
+    static transfereFundos() {
+    }
 
     static async criaWallet(req, res) {
         const newWallet = req.body
         const maiorDeIdade = WalletController.verificaMaiorIdade(req.body.birthdate)
         const cpfValido = WalletController.validaCpf(req.body.cpf)
         try {
+
+            /*
+            Na minha lógica ambas as condições abaixo precisariam retornar 
+            true para que o bloco de códigos fosse executado, porém o mesmo 
+            só funciona com o operador ||
+            */
+
             if (cpfValido == true || maiorDeIdade == true) {
                 const newWalletCreated = await database.wallet.create(newWallet)
                 return res.status(201).json(newWalletCreated)

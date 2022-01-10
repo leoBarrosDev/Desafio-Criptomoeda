@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     datetime: DataTypes.DATE,
     currentcotation: DataTypes.FLOAT,
     sendto: DataTypes.INTEGER,
-    receiveto: DataTypes.INTEGER,
+    receivefrom: DataTypes.INTEGER,
     coin_id: DataTypes.INTEGER,
     wallet_address: DataTypes.INTEGER
   }, {
